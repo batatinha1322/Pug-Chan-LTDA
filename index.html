@@ -1,62 +1,99 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pug-Chan LTDA</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #111;
-            color: #fff;
-            text-align: center;
-            padding: 80px 20px;
-        }
-
-        .container {
-            max-width: 700px;
-            margin: auto;
-            background: #1c1c1c;
-            padding: 40px;
-            border-radius: 12px;
-        }
-
-        h1 {
-            color: #ffdd66;
-            margin-bottom: 10px;
-        }
-
-        p {
-            font-size: 1.2rem;
-            line-height: 1.6;
-        }
-
-        .info {
-            margin-top: 25px;
-            padding: 15px;
-            background: #222;
-            border-radius: 10px;
-            font-size: 1.1rem;
-        }
-
-        .label {
-            color: #ffdd66;
-            font-weight: bold;
-        }
-    </style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Pug-Chan LTDA — Início</title>
+    <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    
-    <div class="container">
-        <h1>Bem-vindo à Pug-Chan LTDA</h1>
-        <p>Nós somos a <strong>Pug-Chan LTDA</strong>, uma empresa dedicada ao desenvolvimento de jogos criativos e divertidos.</p>
-
-        <div class="info">
-            <p><span class="label">Data de criação:</span> 25/25/2525</p>
-            <p><span class="label">Contato:</span> 000-000-00</p>
+    <header class="site-header">
+        <div class="brand">
+            <div class="logo">🐶</div>
+            <div class="title">
+                <strong>Pug-Chan LTDA</strong>
+                <small class="tag">Games • Entretenimento</small>
+            </div>
         </div>
-    </div>
 
+        <nav class="nav">
+            <a href="#home">Início</a>
+            <a href="#games">Nossos Jogos</a>
+            <a href="#contact">Contato</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <h1>Bem-vindo à Pug-Chan LTDA</h1>
+                <p class="lead">
+                    Nós somos a <strong>Pug-Chan LTDA</strong>, uma empresa dedicada ao desenvolvimento de jogos criativos e divertidos.
+                </p>
+
+                <div class="meta">
+                    <div><span class="label">Data de criação:</span> 25/25/2525</div>
+                    <div><span class="label">Contato:</span> 000-000-00</div>
+                </div>
+
+                <div class="actions">
+                    <button class="btn" id="see-games">Ver nossos jogos</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="games" class="games">
+            <div class="container">
+                <h2>Nossos Jogos</h2>
+
+                <div class="games-grid">
+                    <!-- Card do jogo Battle Stars -->
+                    <article class="game-card">
+                        <div class="game-media">
+                            <!-- Substitua as imagens em assets/ pelos seus arquivos -->
+                            <img src="assets/battle1.png" alt="Cena do jogo Battle Stars — personagem no lobby" />
+                        </div>
+
+                        <div class="game-body">
+                            <h3>Battle Stars</h3>
+                            <p class="game-desc">
+                                Battle Stars é um jogo multiplayer de batalha em equipe onde você desbloqueia e coleciona lutadores, evolui suas habilidades e compete em partidas rápidas e estratégicas.
+                                Suba nos rankings ganhando troféus, desbloqueando recompensas e jogando com amigos em diferentes mapas.
+                            </p>
+
+                            <ul class="game-features">
+                                <li>👥 Vários lutadores para colecionar</li>
+                                <li>⭐ Sistema de evolução e upgrades</li>
+                                <li>🏆 Troféus que liberam recompensas</li>
+                                <li>⚔️ Partidas contra outros jogadores e em equipe</li>
+                            </ul>
+                        </div>
+
+                        <div class="game-gallery">
+                            <img src="assets/battle2.png" alt="Tela de seleção de personagem do Battle Stars" />
+                            <img src="assets/battle3.png" alt="Lista de lutadores do Battle Stars" />
+                            <img src="assets/battle4.png" alt="Partida em andamento no Battle Stars" />
+                        </div>
+                    </article>
+
+                    <!-- Você pode duplicar o template acima para adicionar outros jogos -->
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2>Contato</h2>
+                <p>Para parcerias e suporte: <a href="tel:00000000" class="phone">000-000-00</a></p>
+                <p>E-mail: <a href="mailto:contato@pugchan.com">contato@pugchan.com</a></p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div>© 2525 Pug-Chan LTDA — Todos os direitos reservados.</div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
