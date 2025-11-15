@@ -78,8 +78,11 @@ body{
 .games{padding:48px 0}
 .games h2{margin-bottom:18px}
 
-.games-grid{display:grid;grid-template-columns:1fr;gap:22px}
-@media(min-width:880px){ .games-grid{grid-template-columns:1fr} }
+.games-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:22px;
+}
 
 .game-card{
   background:var(--card);
@@ -90,25 +93,50 @@ body{
   gap:18px;
   align-items:start;
 }
+
 @media(max-width:880px){
   .game-card{grid-template-columns:1fr; padding:16px}
   .game-gallery{display:flex;gap:8px;overflow:auto;margin-top:12px}
   .game-gallery img{width:160px;height:96px;object-fit:cover;border-radius:8px}
 }
 
-.game-media img{width:100%;height:100%;max-height:220px;object-fit:cover;border-radius:10px}
+.game-media img{
+  width:100%;
+  height:100%;
+  max-height:220px;
+  object-fit:cover;
+  border-radius:10px;
+  transition:.25s;
+}
+
 .game-body h3{margin:0 0 8px 0}
 .game-desc{color:var(--muted);margin-bottom:10px}
 .game-features{list-style:none;padding:0;margin:0;color:var(--muted)}
 .game-features li{margin:6px 0}
 
 /* Gallery */
-.game-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:8px}
-.game-gallery img{width:100%;height:96px;object-fit:cover;border-radius:8px}
+.game-gallery{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-top:8px;
+}
 
-/* Contact & footer */
-.contact{padding:40px 0}
-.contact a{color:var(--accent);text-decoration:none}
+.game-gallery img{
+  width:100%;
+  height:96px;
+  object-fit:cover;
+  border-radius:8px;
+  cursor:pointer;
+  transition:.2s;
+}
+
+/* Miniatura ativa */
+.game-gallery img.active-thumb{
+  outline:3px solid var(--accent);
+  outline-offset:2px;
+  filter:brightness(1.15);
+}
 
 .site-footer{
   padding:18px;
