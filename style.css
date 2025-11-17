@@ -2,8 +2,9 @@
   --bg:#0f0f12;
   --card:#17171b;
   --muted:#bdbdbd;
-  --accent:#ffdd66;
-  --accent-glow:rgba(255,221,102,0.55);
+  --accent:#ffdd66;       /* neon suave */
+  --accent-soft:rgba(255,221,102,0.55);
+  --accent-glow:rgba(255,221,102,0.35);
   --container:1100px;
   --radius:12px;
   --gap:20px;
@@ -20,7 +21,7 @@ body{
   background:var(--bg);
   color:var(--text);
   -webkit-font-smoothing:antialiased;
-  animation: fadeIn 0.8s ease forwards;
+  animation:fadeIn 0.6s ease forwards;
 }
 
 /* Fade-in global */
@@ -35,9 +36,9 @@ body{
   padding:0 20px;
 }
 
-/* ==================================== */
-/* HEADER */
-/* ==================================== */
+/* ========================= */
+/* HEADER — B2 com neon suave */
+/* ========================= */
 .site-header{
   display:flex;
   justify-content:space-between;
@@ -49,65 +50,51 @@ body{
   position:sticky;
   top:0;
   z-index:50;
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(5px);
   transition:var(--transition);
-  box-shadow:0 0 0 transparent;
+  box-shadow:0 2px 12px rgba(255,221,102,0.06);
 }
 
 .site-header:hover{
-  border-bottom-color:rgba(255,221,102,0.4);
-  box-shadow:0 0 14px rgba(255,221,102,0.15);
+  border-bottom-color:var(--accent);
+  box-shadow:0 2px 16px rgba(255,221,102,0.20);
 }
 
 .brand{display:flex;align-items:center;gap:12px}
 
 .logo{
   font-size:28px;
-  filter:drop-shadow(0 0 6px var(--accent-glow));
+  filter:drop-shadow(0 0 4px var(--accent-glow));
   transition:var(--transition);
 }
 
 .logo:hover{
-  transform:scale(1.18) rotate(4deg);
+  transform:scale(1.15);
+  filter:drop-shadow(0 0 8px var(--accent));
 }
 
-/* Nav */
 .nav a{
   color:var(--text);
   text-decoration:none;
   margin-left:18px;
   font-weight:600;
-  padding-bottom:4px;
+  opacity:.95;
+  padding-bottom:3px;
   border-bottom:2px solid transparent;
   transition:var(--transition);
-  position:relative;
 }
 
 .nav a:hover{
   color:var(--accent);
-  border-bottom-color:var(--accent);
+  border-bottom:2px solid var(--accent);
 }
 
-.nav a::after{
-  content:"";
-  position:absolute;
-  left:0; bottom:-4px;
-  width:0%; height:2px;
-  background:var(--accent);
-  transition:var(--transition);
-}
-
-.nav a:hover::after{
-  width:100%;
-}
-
-/* ==================================== */
+/* ========================= */
 /* HERO */
-/* ==================================== */
+/* ========================= */
 .hero{
   padding:64px 0;
   text-align:center;
-  animation: fadeIn 0.9s ease forwards;
 }
 
 .hero h1{
@@ -115,13 +102,12 @@ body{
   display:inline-block;
   padding-bottom:8px;
   transition:var(--transition);
-  text-shadow:0 0 8px rgba(255,221,102,0.1);
 }
 
 .hero h1:hover{
   color:var(--accent);
   border-bottom-color:var(--accent);
-  text-shadow:0 0 12px var(--accent-glow);
+  text-shadow:0 0 6px var(--accent-soft);
 }
 
 .hero .lead{
@@ -130,7 +116,6 @@ body{
   font-size:1.05rem;
 }
 
-/* Meta */
 .meta{
   display:inline-grid;
   margin-top:20px;
@@ -144,10 +129,10 @@ body{
 
 .meta:hover{
   border-color:var(--accent);
-  box-shadow:0 0 12px rgba(255,221,102,0.25);
+  box-shadow:0 0 10px var(--accent-glow);
 }
 
-/* Botão */
+/* BOTÃO */
 .btn{
   background:var(--accent);
   color:#111;
@@ -157,20 +142,18 @@ body{
   font-weight:700;
   cursor:pointer;
   transition:var(--transition);
-  margin-top:18px;
 }
 
 .btn:hover{
-  box-shadow:0 0 14px rgba(255,221,102,0.8);
-  transform:translateY(-4px);
+  box-shadow:0 0 14px rgba(255,221,102,0.75);
+  transform:translateY(-4px) scale(1.03);
 }
 
-/* ==================================== */
+/* ========================= */
 /* GAMES SECTION */
-/* ==================================== */
+/* ========================= */
 .games{
   padding:48px 0;
-  animation: fadeIn 1s ease forwards;
 }
 
 .games h2{
@@ -178,32 +161,35 @@ body{
   border-left:4px solid var(--accent);
   padding-left:12px;
   transition:var(--transition);
+  text-shadow:0 0 6px rgba(255,221,102,0.25);
 }
 
 .games h2:hover{
   padding-left:18px;
-  text-shadow:0 0 12px var(--accent-glow);
+  text-shadow:0 0 12px rgba(255,221,102,0.55);
 }
 
-/* Game card */
+/* CARD DE JOGO — B2 neon moderado */
 .game-card{
   background:var(--card);
   border-radius:var(--radius);
   padding:18px;
   display:grid;
-  grid-template-columns: 320px 1fr;
+  grid-template-columns:320px 1fr;
   gap:18px;
   align-items:start;
-  border:1px solid rgba(255,221,102,0.1);
+  border:1px solid rgba(255,221,102,0.12);
   transition:var(--transition);
   position:relative;
   overflow:hidden;
 }
 
 .game-card:hover{
-  border-color:rgba(255,221,102,0.3);
+  border-color:var(--accent);
   transform:translateY(-6px);
-  box-shadow:0 0 18px rgba(255,221,102,0.25);
+  box-shadow:
+    0 0 18px rgba(255,221,102,0.28),
+    0 0 38px rgba(255,221,102,0.14);
 }
 
 /* brilho lateral */
@@ -212,7 +198,7 @@ body{
   position:absolute;
   top:0; left:0;
   width:100%; height:100%;
-  background:linear-gradient(to right, rgba(255,221,102,0.06), transparent);
+  background:linear-gradient(to right, rgba(255,221,102,0.07), transparent);
   opacity:0;
   transition:var(--transition);
 }
@@ -225,7 +211,9 @@ body{
   .game-card{grid-template-columns:1fr;}
 }
 
-/* Imagem grande */
+/* ========================= */
+/* IMAGEM PRINCIPAL */
+/* ========================= */
 .game-media img{
   width:100%;
   height:100%;
@@ -234,12 +222,6 @@ body{
   border-radius:10px;
   border:2px solid rgba(255,221,102,0.25);
   transition:var(--transition);
-  box-shadow:0 0 10px rgba(255,221,102,0.12);
-}
-
-.game-media img:hover{
-  border-color:var(--accent);
-  box-shadow:0 0 16px rgba(255,221,102,0.35);
 }
 
 .game-media img.swap-animation{
@@ -247,14 +229,14 @@ body{
 }
 
 @keyframes imgSwap {
-  from { opacity:0; transform:scale(0.92); }
+  from { opacity:0; transform:scale(0.95); }
   to   { opacity:1; transform:scale(1); }
 }
 
-/* Textos */
+/* TEXTO */
 .game-body h3{
   margin:0 0 8px 0;
-  border-bottom:1px solid rgba(255,221,102,0.2);
+  border-bottom:1px solid rgba(255,221,102,0.25);
   padding-bottom:4px;
   display:inline-block;
   transition:var(--transition);
@@ -263,23 +245,25 @@ body{
 .game-body h3:hover{
   color:var(--accent);
   border-color:var(--accent);
-  text-shadow:0 0 10px var(--accent-glow);
+  text-shadow:0 0 6px var(--accent-soft);
 }
 
 .game-features li{
   margin:6px 0;
   padding-left:12px;
-  border-left:2px solid rgba(255,221,102,0.25);
+  border-left:2px solid rgba(255,221,102,0.3);
   transition:var(--transition);
 }
 
 .game-features li:hover{
   border-left-color:var(--accent);
   color:var(--accent);
-  transform:translateX(4px);
+  text-shadow:0 0 6px rgba(255,221,102,0.5);
 }
 
-/* Galeria */
+/* ========================= */
+/* MINIATURAS */
+/* ========================= */
 .game-gallery img{
   width:100%;
   height:96px;
@@ -291,14 +275,19 @@ body{
 }
 
 .game-gallery img:hover{
-  transform:scale(1.06);
+  transform:scale(1.07);
   border-color:var(--accent);
-  box-shadow:0 0 10px var(--accent-glow);
+  box-shadow:0 0 12px rgba(255,221,102,0.5);
 }
 
-/* ==================================== */
-/* CONTACT */
-/* ==================================== */
+.active-thumb{
+  border-color:var(--accent) !important;
+  box-shadow:0 0 14px rgba(255,221,102,0.55);
+}
+
+/* ========================= */
+/* CONTATO */
+/* ========================= */
 .contact a{
   color:var(--accent);
   text-decoration:none;
@@ -306,12 +295,10 @@ body{
 }
 
 .contact a:hover{
-  text-shadow:0 0 8px var(--accent-glow);
+  text-shadow:0 0 8px var(--accent-soft);
 }
 
-/* ==================================== */
 /* FOOTER */
-/* ==================================== */
 .site-footer{
   padding:18px;
   text-align:center;
@@ -320,10 +307,9 @@ body{
   font-size:14px;
   color:var(--muted);
   border-top:1px solid rgba(255,221,102,0.15);
-  transition:var(--transition);
 }
 
 .site-footer:hover{
   border-top-color:var(--accent);
-  box-shadow:0 0 12px rgba(255,221,102,0.2);
+  box-shadow:0 0 16px rgba(255,221,102,0.20);
 }
