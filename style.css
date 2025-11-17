@@ -20,6 +20,18 @@ body{
   -webkit-font-smoothing:antialiased;
 }
 
+/* --- Decorativo amarelo sutil no topo --- */
+body:before{
+  content:"";
+  width:100%;
+  height:4px;
+  background:var(--accent);
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:999;
+}
+
 .container{
   max-width:var(--container);
   margin:0 auto;
@@ -37,10 +49,11 @@ body{
   position:sticky;
   top:0;
   z-index:50;
+  border-bottom:1px solid rgba(255,221,102,0.15); /* leve linha amarela */
 }
 
 .brand{display:flex;align-items:center;gap:12px}
-.logo{font-size:28px}
+.logo{font-size:28px;color:var(--accent)} /* logozinho amarelo */
 .title strong{font-size:16px;display:block}
 .tag{font-size:12px;color:var(--muted)}
 
@@ -50,16 +63,35 @@ body{
   margin-left:18px;
   font-weight:600;
   opacity:.95;
+  transition:.2s;
 }
-.nav a:hover{color:var(--accent)}
+.nav a:hover{
+  color:var(--accent);
+  text-shadow:0 0 4px var(--accent);
+}
 
 /* Hero */
 .hero{
   padding:64px 0;
   text-align:center;
 }
-.hero .lead{margin-top:12px;color:var(--muted);font-size:1.05rem}
-.meta{display:inline-grid;margin-top:20px;gap:8px;background:rgba(255,255,255,0.02);padding:12px;border-radius:10px}
+.hero h1{
+  color:var(--accent); /* título amarelo elegante */
+}
+.hero .lead{
+  margin-top:12px;
+  color:var(--muted);
+  font-size:1.05rem
+}
+.meta{
+  display:inline-grid;
+  margin-top:20px;
+  gap:8px;
+  background:rgba(255,255,255,0.02);
+  padding:12px;
+  border-radius:10px;
+  border:1px solid rgba(255,221,102,0.25);
+}
 .label{color:var(--accent);font-weight:700;margin-right:6px}
 
 .actions{margin-top:18px}
@@ -71,17 +103,32 @@ body{
   border-radius:10px;
   font-weight:700;
   cursor:pointer;
+  box-shadow:0 0 10px rgba(255,221,102,0.4);
+  transition:.2s;
 }
-.btn:hover{filter:brightness(.95)}
+.btn:hover{
+  filter:brightness(.95);
+  box-shadow:0 0 14px rgba(255,221,102,0.7);
+}
 
 /* Games section */
-.games{padding:48px 0}
-.games h2{margin-bottom:18px}
+.games{
+  padding:48px 0;
+}
+.games h2{
+  margin-bottom:18px;
+  color:var(--accent); /* título de seção */
+  border-left:4px solid var(--accent);
+  padding-left:12px;
+}
 
 .games-grid{
   display:grid;
   grid-template-columns:1fr;
-  gap:22px;
+  gap:22px
+}
+@media(min-width:880px){
+  .games-grid{grid-template-columns:1fr}
 }
 
 .game-card{
@@ -92,12 +139,23 @@ body{
   grid-template-columns: 320px 1fr;
   gap:18px;
   align-items:start;
+  border:1px solid rgba(255,221,102,0.15);
+  transition:.25s;
 }
-
+.game-card:hover{
+  border-color:var(--accent);
+  box-shadow:0 0 20px rgba(255,221,102,.15);
+}
 @media(max-width:880px){
-  .game-card{grid-template-columns:1fr; padding:16px}
-  .game-gallery{display:flex;gap:8px;overflow:auto;margin-top:12px}
-  .game-gallery img{width:160px;height:96px;object-fit:cover;border-radius:8px}
+  .game-card{
+    grid-template-columns:1fr; padding:16px
+  }
+  .game-gallery{
+    display:flex;gap:8px;overflow:auto;margin-top:12px
+  }
+  .game-gallery img{
+    width:160px;height:96px;object-fit:cover;border-radius:8px
+  }
 }
 
 .game-media img{
@@ -106,22 +164,37 @@ body{
   max-height:220px;
   object-fit:cover;
   border-radius:10px;
-  transition:.25s;
+  border:2px solid rgba(255,221,102,0.2);
 }
 
-.game-body h3{margin:0 0 8px 0}
-.game-desc{color:var(--muted);margin-bottom:10px}
-.game-features{list-style:none;padding:0;margin:0;color:var(--muted)}
-.game-features li{margin:6px 0}
+.game-body h3{
+  margin:0 0 8px 0;
+  color:var(--accent);
+  text-shadow:0 0 4px rgba(255,221,102,0.3);
+}
+.game-desc{
+  color:var(--muted);
+  margin-bottom:10px
+}
+.game-features{
+  list-style:none;
+  padding:0;
+  margin:0;
+  color:var(--muted)
+}
+.game-features li{
+  margin:6px 0;
+  padding-left:14px;
+  border-left:3px solid rgba(255,221,102,0.35); /* detalhe */
+}
 
 /* Gallery */
 .game-gallery{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:10px;
-  margin-top:8px;
+  margin-top:8px
 }
-
 .game-gallery img{
   width:100%;
   height:96px;
@@ -130,12 +203,18 @@ body{
   cursor:pointer;
   transition:.2s;
 }
-
-/* Miniatura ativa */
-.game-gallery img.active-thumb{
-  outline:3px solid var(--accent);
-  outline-offset:2px;
+.game-gallery img:hover{
   filter:brightness(1.15);
+  border:2px solid var(--accent);
+}
+
+/* Contact & footer */
+.contact{
+  padding:40px 0
+}
+.contact a{
+  color:var(--accent);
+  text-decoration:none;
 }
 
 .site-footer{
@@ -145,4 +224,5 @@ body{
   margin-top:30px;
   font-size:14px;
   color:var(--muted);
+  border-top:1px solid rgba(255,221,102,0.15);
 }
