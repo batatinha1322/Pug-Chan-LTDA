@@ -157,10 +157,10 @@ body {
 
 /* ============================ */
 /* CARD DE JOGO                 */
-/* ============================ */
+/* ============================ 
 .game-card {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: 320px 1fr; /* imagem fixa e conteúdo flexível */
   gap: 18px;
   max-width: 700px;
   width: 100%;
@@ -171,24 +171,25 @@ body {
   transition: var(--transition);
   position: relative;
   overflow: hidden;
+  align-items: start; /* evita que o texto force a imagem a esticar */
 }
-.game-card:hover {
-  border-color: var(--accent);
-  transform: translateY(-6px);
-  box-shadow: 0 0 18px rgba(255,221,102,0.28), 0 0 38px rgba(255,221,102,0.14);
-}
-.game-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
+
+[data-gallery-main] {
   width: 100%;
-  height: 100%;
-  background: linear-gradient(to right, rgba(255,221,102,0.07), transparent);
-  opacity: 0;
-  transition: var(--transition);
+  height: auto;
+  max-height: 220px;
 }
-.game-card:hover::before { opacity: 1; }
+
+@media(max-width:880px) {
+  .game-card {
+    grid-template-columns: 1fr; /* vira coluna única */
+  }
+
+  [data-gallery-main] {
+    max-width: 100%;
+  }
+}
+
 
 /* ============================ */
 /* IMAGEM PRINCIPAL             */
