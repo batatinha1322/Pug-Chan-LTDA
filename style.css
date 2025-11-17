@@ -3,12 +3,13 @@
   --card:#17171b;
   --muted:#bdbdbd;
   --accent:#ffdd66;
+  --accent-glow:rgba(255,221,102,0.55);
   --container:1100px;
   --radius:12px;
   --gap:20px;
   --pad:24px;
   --text:#ffffff;
-  --transition:0.35s ease;  /* transições suaves */
+  --transition:0.35s ease;
 }
 
 *{box-sizing:border-box}
@@ -19,13 +20,10 @@ body{
   background:var(--bg);
   color:var(--text);
   -webkit-font-smoothing:antialiased;
-}
-
-/* Fade-in global */
-body, .site-header, .hero, .games, .contact, .site-footer {
   animation: fadeIn 0.8s ease forwards;
 }
 
+/* Fade-in global */
 @keyframes fadeIn {
   from { opacity:0; transform:translateY(10px); }
   to   { opacity:1; transform:translateY(0); }
@@ -37,7 +35,9 @@ body, .site-header, .hero, .games, .contact, .site-footer {
   padding:0 20px;
 }
 
-/* Header */
+/* ==================================== */
+/* HEADER */
+/* ==================================== */
 .site-header{
   display:flex;
   justify-content:space-between;
@@ -51,44 +51,63 @@ body, .site-header, .hero, .games, .contact, .site-footer {
   z-index:50;
   backdrop-filter: blur(4px);
   transition:var(--transition);
+  box-shadow:0 0 0 transparent;
 }
 
 .site-header:hover{
-  border-bottom-color:rgba(255,221,102,0.35);
+  border-bottom-color:rgba(255,221,102,0.4);
+  box-shadow:0 0 14px rgba(255,221,102,0.15);
 }
 
 .brand{display:flex;align-items:center;gap:12px}
 
 .logo{
   font-size:28px;
-  filter:drop-shadow(0 0 4px rgba(255,221,102,0.45));
+  filter:drop-shadow(0 0 6px var(--accent-glow));
   transition:var(--transition);
 }
 
 .logo:hover{
-  transform:scale(1.15);
+  transform:scale(1.18) rotate(4deg);
 }
 
+/* Nav */
 .nav a{
   color:var(--text);
   text-decoration:none;
   margin-left:18px;
   font-weight:600;
-  opacity:.95;
-  padding-bottom:3px;
+  padding-bottom:4px;
   border-bottom:2px solid transparent;
   transition:var(--transition);
+  position:relative;
 }
 
 .nav a:hover{
   color:var(--accent);
-  border-bottom:2px solid var(--accent);
+  border-bottom-color:var(--accent);
 }
 
-/* Hero */
+.nav a::after{
+  content:"";
+  position:absolute;
+  left:0; bottom:-4px;
+  width:0%; height:2px;
+  background:var(--accent);
+  transition:var(--transition);
+}
+
+.nav a:hover::after{
+  width:100%;
+}
+
+/* ==================================== */
+/* HERO */
+/* ==================================== */
 .hero{
   padding:64px 0;
   text-align:center;
+  animation: fadeIn 0.9s ease forwards;
 }
 
 .hero h1{
@@ -96,11 +115,13 @@ body, .site-header, .hero, .games, .contact, .site-footer {
   display:inline-block;
   padding-bottom:8px;
   transition:var(--transition);
+  text-shadow:0 0 8px rgba(255,221,102,0.1);
 }
 
 .hero h1:hover{
   color:var(--accent);
   border-bottom-color:var(--accent);
+  text-shadow:0 0 12px var(--accent-glow);
 }
 
 .hero .lead{
@@ -109,6 +130,7 @@ body, .site-header, .hero, .games, .contact, .site-footer {
   font-size:1.05rem;
 }
 
+/* Meta */
 .meta{
   display:inline-grid;
   margin-top:20px;
@@ -122,6 +144,7 @@ body, .site-header, .hero, .games, .contact, .site-footer {
 
 .meta:hover{
   border-color:var(--accent);
+  box-shadow:0 0 12px rgba(255,221,102,0.25);
 }
 
 /* Botão */
@@ -134,15 +157,21 @@ body, .site-header, .hero, .games, .contact, .site-footer {
   font-weight:700;
   cursor:pointer;
   transition:var(--transition);
+  margin-top:18px;
 }
 
 .btn:hover{
-  box-shadow:0 0 10px rgba(255,221,102,0.7);
-  transform:translateY(-3px);
+  box-shadow:0 0 14px rgba(255,221,102,0.8);
+  transform:translateY(-4px);
 }
 
-/* Games section */
-.games{padding:48px 0}
+/* ==================================== */
+/* GAMES SECTION */
+/* ==================================== */
+.games{
+  padding:48px 0;
+  animation: fadeIn 1s ease forwards;
+}
 
 .games h2{
   margin-bottom:18px;
@@ -153,6 +182,7 @@ body, .site-header, .hero, .games, .contact, .site-footer {
 
 .games h2:hover{
   padding-left:18px;
+  text-shadow:0 0 12px var(--accent-glow);
 }
 
 /* Game card */
@@ -173,16 +203,16 @@ body, .site-header, .hero, .games, .contact, .site-footer {
 .game-card:hover{
   border-color:rgba(255,221,102,0.3);
   transform:translateY(-6px);
-  box-shadow:0 0 18px rgba(255,221,102,0.18);
+  box-shadow:0 0 18px rgba(255,221,102,0.25);
 }
 
-/* leve brilho lateral */
+/* brilho lateral */
 .game-card::before{
   content:"";
   position:absolute;
   top:0; left:0;
   width:100%; height:100%;
-  background:linear-gradient(to right, rgba(255,221,102,0.05), transparent);
+  background:linear-gradient(to right, rgba(255,221,102,0.06), transparent);
   opacity:0;
   transition:var(--transition);
 }
@@ -202,8 +232,14 @@ body, .site-header, .hero, .games, .contact, .site-footer {
   max-height:220px;
   object-fit:cover;
   border-radius:10px;
-  border:2px solid rgba(255,221,102,0.20);
+  border:2px solid rgba(255,221,102,0.25);
   transition:var(--transition);
+  box-shadow:0 0 10px rgba(255,221,102,0.12);
+}
+
+.game-media img:hover{
+  border-color:var(--accent);
+  box-shadow:0 0 16px rgba(255,221,102,0.35);
 }
 
 .game-media img.swap-animation{
@@ -211,11 +247,11 @@ body, .site-header, .hero, .games, .contact, .site-footer {
 }
 
 @keyframes imgSwap {
-  from { opacity:0; transform:scale(0.95); }
+  from { opacity:0; transform:scale(0.92); }
   to   { opacity:1; transform:scale(1); }
 }
 
-/* Texto card */
+/* Textos */
 .game-body h3{
   margin:0 0 8px 0;
   border-bottom:1px solid rgba(255,221,102,0.2);
@@ -227,6 +263,7 @@ body, .site-header, .hero, .games, .contact, .site-footer {
 .game-body h3:hover{
   color:var(--accent);
   border-color:var(--accent);
+  text-shadow:0 0 10px var(--accent-glow);
 }
 
 .game-features li{
@@ -239,6 +276,7 @@ body, .site-header, .hero, .games, .contact, .site-footer {
 .game-features li:hover{
   border-left-color:var(--accent);
   color:var(--accent);
+  transform:translateX(4px);
 }
 
 /* Galeria */
@@ -253,12 +291,14 @@ body, .site-header, .hero, .games, .contact, .site-footer {
 }
 
 .game-gallery img:hover{
-  transform:scale(1.05);
+  transform:scale(1.06);
   border-color:var(--accent);
-  box-shadow:0 0 8px rgba(255,221,102,0.4);
+  box-shadow:0 0 10px var(--accent-glow);
 }
 
-/* Contact */
+/* ==================================== */
+/* CONTACT */
+/* ==================================== */
 .contact a{
   color:var(--accent);
   text-decoration:none;
@@ -266,10 +306,12 @@ body, .site-header, .hero, .games, .contact, .site-footer {
 }
 
 .contact a:hover{
-  text-shadow:0 0 6px rgba(255,221,102,0.6);
+  text-shadow:0 0 8px var(--accent-glow);
 }
 
-/* Footer */
+/* ==================================== */
+/* FOOTER */
+/* ==================================== */
 .site-footer{
   padding:18px;
   text-align:center;
@@ -283,4 +325,5 @@ body, .site-header, .hero, .games, .contact, .site-footer {
 
 .site-footer:hover{
   border-top-color:var(--accent);
+  box-shadow:0 0 12px rgba(255,221,102,0.2);
 }
