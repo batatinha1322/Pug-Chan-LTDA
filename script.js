@@ -53,3 +53,13 @@ document.querySelectorAll('.game-card').forEach(card => {
   });
 
 });
+
+// =================================================
+// EXPANDIR / RECOLHER DESCRIÇÃO
+// =================================================
+
+document.querySelectorAll(".dev-desc").forEach(desc => {
+    desc.addEventListener("click", () => {
+        desc.classList.toggle("expanded");
+    });
+});
