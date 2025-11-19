@@ -295,38 +295,50 @@ html { scroll-behavior: smooth; }
 /* JOGOS EM DESENVOLVIMENTO — VERSÃO COMPACTA + FUNDO ANIMADO */
 /* ========================================================= */
 
+/* --- DEGRADÊ INFINITO SUAVE --- */
 .dev-section {
     margin-top: 40px;
     padding: 40px 0;
-    background: linear-gradient(90deg, #000000, #ffdd66);
-    background-size: 200% 200%;
-    animation: moveGradient 8s linear infinite;
+    background: linear-gradient(120deg, #000000, #ffdd66, #000000);
+    background-size: 300% 300%;
+    animation: endlessGradient 18s linear infinite;
     border-top: 1px solid rgba(255,221,102,0.25);
     border-bottom: 1px solid rgba(255,221,102,0.25);
 }
 
-/* Animação do degradê andando */
-@keyframes moveGradient {
+@keyframes endlessGradient {
     0% { background-position: 0% 50%; }
-    100% { background-position: -200% 50%; }
+    100% { background-position: -300% 50%; }
 }
 
-.small-dev {
-    max-width: 700px;
+/* --- DESCRIÇÃO EXPANSÍVEL --- */
+.dev-desc {
+    margin: 6px 0 12px;
+    color: var(--muted);
+    font-size: 0.95rem;
+    max-width: 340px;
+
+    max-height: 48px; /* 2 linhas */
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+    cursor: pointer;
 }
 
-.dev-title {
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 1.6rem;
-    background: rgba(0,0,0,0.45);
-    padding: 6px 14px;
-    border-radius: 8px;
-    display: inline-block;
-    border: 1px solid rgba(255,221,102,0.3);
+.dev-desc.expanded {
+    max-height: 200px;
 }
 
-/* CARD COMPACTO */
+.dev-desc::after {
+    content: " (clique para expandir)";
+    font-size: 0.8rem;
+    color: var(--accent);
+}
+
+.dev-desc.expanded::after {
+    content: " (clique para recolher)";
+}
+
+/* --- CARD COMPACTO --- */
 .dev-card.compact {
     display: flex;
     align-items: center;
@@ -374,6 +386,7 @@ html { scroll-behavior: smooth; }
         flex-direction: column;
         text-align: center;
     }
+
     .dev-character.small img {
         width: 140px;
         height: 140px;
