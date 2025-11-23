@@ -10,7 +10,7 @@ document.getElementById('see-games')?.addEventListener('click', () => {
 
 
 // =================================================
-// GALERIA INTERATIVA COM ANIMAÇÕES ESTA BEM TOP
+// GALERIA INTERATIVA COM ANIMAÇÕES BEM TOP
 // =================================================
 document.querySelectorAll('.game-card').forEach(card => {
 
